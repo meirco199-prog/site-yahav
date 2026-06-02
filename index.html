@@ -6,7 +6,7 @@
   <title>יהב סוכנות לביטוח | מאיר כהן</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@400;500;600;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
       --black:  #e9eff6;
@@ -29,6 +29,10 @@
       --text:   #33445c;
       --shadow-lg: 0 24px 60px -24px rgba(16,42,84,.22);
       --glow-org: 0 0 0 1px rgba(31,107,209,.20), 0 18px 50px -12px rgba(31,107,209,.28);
+      --lux-gold:#c9a86a;
+      --lux-gold2:#e3c98a;
+      --lux-gold-deep:#a8863f;
+      --grad-gold:linear-gradient(135deg,#e3c98a 0%,#c9a86a 55%,#a8863f 100%);
     }
     *{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
@@ -117,10 +121,10 @@
     .hero-aside{gap:16px;width:min(46vw,520px);}
     .ha-emblem{width:clamp(150px,18vw,210px);height:clamp(150px,18vw,210px);background:url('images/emblem.png') center/contain no-repeat;filter:drop-shadow(0 12px 34px rgba(90,180,255,.55)) brightness(1.12);animation:heroReveal 1.6s .3s ease-out both;}
     .ha-name{font-size:clamp(28px,4vw,50px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.1;animation:heroReveal 1.6s .75s ease-out both;}
-    .ha-slogan{font-size:clamp(24px,3.4vw,42px);font-weight:800;background:linear-gradient(135deg,#8fceff,#3b9ae1);-webkit-background-clip:text;background-clip:text;color:transparent;animation:heroReveal 1.6s 1.2s ease-out both;}
+    .ha-slogan{font-size:clamp(24px,3.4vw,42px);font-weight:800;background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;animation:heroReveal 1.6s 1.2s ease-out both;}
     @keyframes heroReveal{0%{opacity:0;transform:scale(.86) translateY(22px);}100%{opacity:1;transform:none;}}
-    .btn-blink{animation:ctaBlink 1.3s ease-in-out infinite;}
-    @keyframes ctaBlink{0%,100%{opacity:1;box-shadow:0 8px 26px -6px rgba(31,107,209,.55);}50%{opacity:.62;box-shadow:0 0 0 5px rgba(124,196,255,.45),0 14px 38px -4px rgba(31,107,209,.95);}}
+    .btn-blink{animation:ctaGlow 2.8s ease-in-out infinite;}
+    @keyframes ctaGlow{0%,100%{box-shadow:0 8px 26px -6px rgba(31,107,209,.5);}50%{box-shadow:0 0 0 3px rgba(201,168,106,.5),0 16px 44px -6px rgba(201,168,106,.55);}}
     #hero .hero-logo{display:none;}
     #hero .hero-name,#hero .hero-sub,#hero .hero-tagline,#hero .hero-trust,#hero .hero-btns,#hero .hero-badge{text-align:right;}
     #hero .hero-trust,#hero .hero-btns{justify-content:flex-start;}
@@ -264,20 +268,22 @@
     @keyframes scroll-anim{0%{top:6px;opacity:1;}100%{top:20px;opacity:0;}}
 
     /* ══ SECTION WRAPPER ══ */
-    .section{padding:96px 24px;position:relative;}
+    .section{padding:112px 24px;position:relative;}
     .section-inner{max-width:1140px;margin:0 auto;}
     .sec-label{
       display:inline-flex;align-items:center;gap:10px;
-      color:var(--org2);font-size:11.5px;font-weight:800;
+      color:var(--lux-gold-deep);font-size:11.5px;font-weight:800;
       letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px;
     }
-    .sec-label::before{content:'';width:28px;height:2px;background:var(--grad);border-radius:2px;}
+    .sec-label::before{content:'';width:28px;height:2px;background:var(--grad-gold);border-radius:2px;}
     .sec-title{
       font-size:clamp(26px,4.5vw,40px);font-weight:900;margin-bottom:14px;
       line-height:1.15;letter-spacing:-1px;
     }
-    .sec-title b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .sec-title b{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;}
     .sec-sub{font-size:clamp(14px,2vw,16px);color:var(--muted);max-width:540px;line-height:1.75;}
+    /* ══ LUXURY: serif headings + gold ══ */
+    .sec-title,.hero-name,#hero .ha-name,.modal-title,.team-name,.cta-band h2,.form-title{font-family:'Frank Ruhl Libre',Georgia,serif;letter-spacing:-.2px;}
 
     /* ══ STATS BAND ══ */
     #stats{padding:0 24px;margin-top:-48px;position:relative;z-index:5;}
@@ -299,7 +305,7 @@
     .stat-item:last-child{border-left:none;}
     .stat-num{
       font-size:clamp(28px,4.5vw,40px);font-weight:900;line-height:1;
-      background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+      background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
     }
     .stat-label{font-size:13px;color:var(--muted);margin-top:7px;font-weight:500;}
 
@@ -330,10 +336,13 @@
       width:58px;height:58px;border-radius:16px;
       background:var(--grad-soft);border:1px solid var(--oborder);
       display:flex;align-items:center;justify-content:center;
-      font-size:27px;margin-bottom:18px;position:relative;z-index:1;
+      color:var(--orange);margin-bottom:18px;position:relative;z-index:1;
       box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
-      transition:transform .28s;
+      transition:transform .28s, color .28s;
     }
+    .srv-icon svg{width:28px;height:28px;}
+    .srv-card:hover .srv-icon{color:var(--lux-gold-deep);border-color:rgba(201,168,106,.5);}
+    .modal-icon svg{width:30px;height:30px;stroke:var(--orange);}
     .srv-card:hover .srv-icon{transform:scale(1.08) rotate(-4deg);}
     .srv-name{font-size:19px;font-weight:800;margin-bottom:9px;position:relative;z-index:1;}
     .srv-desc{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:18px;position:relative;z-index:1;}
@@ -742,7 +751,7 @@
     <a href="#media">תקשורת</a>
     <a href="#contact">צור קשר</a>
   </div>
-  <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לשיחת+ייעוץ" class="nav-cta">💬 WhatsApp</a>
+  <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לשיחת+ייעוץ" class="nav-cta">WhatsApp</a>
 </nav>
 
 <!-- ══ HERO ══ -->
@@ -892,91 +901,91 @@
 
       <div class="srv-card fade-in" onclick="openModal('life')">
         <div class="srv-tag">פופולרי</div>
-        <div class="srv-icon">❤️</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C5.5 16.3 3 12 4.4 8.3 5.6 5 9.4 4.6 12 7.4 14.6 4.6 18.4 5 19.6 8.3 21 12 18.5 16.3 12 20.5Z"/></svg></div>
         <div class="srv-name">ביטוח חיים</div>
         <div class="srv-desc">הגנה כלכלית למשפחתך במקרה של פטירה. כי אהבה היא גם תכנון.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('health')">
-        <div class="srv-icon">🏥</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg></div>
         <div class="srv-name">ביטוח בריאות</div>
         <div class="srv-desc">ניתוחים פרטיים, תרופות, מומחים ובדיקות — בלי להמתין לתור.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('pension')">
-        <div class="srv-icon">📈</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16l5.5-5.5 3.5 3.5L21 5"/><path d="M15 5h6v6"/></svg></div>
         <div class="srv-name">פנסיה וביטוח מנהלים</div>
         <div class="srv-desc">בנה את העתיד שלך היום. אנליזה מקצועית של קרן הפנסיה שלך.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('home')">
-        <div class="srv-icon">🏠</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></svg></div>
         <div class="srv-name">ביטוח דירה</div>
         <div class="srv-desc">הגנה על הבית שלך — מבנה, תכולה ואחריות צד שלישי.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('car')">
-        <div class="srv-icon">🚗</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="6" rx="2"/><path d="M6 11l2-4h8l2 4"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/></svg></div>
         <div class="srv-name">ביטוח רכב</div>
         <div class="srv-desc">חובה, מקיף ואחריות — עם תנאים שבאמת מכסים כשצריך.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('business')">
-        <div class="srv-icon">🏢</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M14 10h5a1 1 0 0 1 1 1v10"/><path d="M3 21h18"/><path d="M7 8h3M7 12h3M7 16h3"/></svg></div>
         <div class="srv-name">ביטוח עסקי</div>
         <div class="srv-desc">הגנה מלאה לעסק שלך: ציוד, עובדים, אחריות מקצועית ועוד.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('savings')">
-        <div class="srv-icon">💰</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7" ry="3"/><path d="M5 6.5v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/><path d="M5 11.5v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/></svg></div>
         <div class="srv-name">חיסכון והשקעות</div>
         <div class="srv-desc">תוכניות חיסכון חכמות לטווח קצר וארוך שעובדות בשבילך.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('accident')">
-        <div class="srv-icon">🩺</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5V11c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V5.5L12 3Z"/><path d="M12 8.5v5M9.5 11h5"/></svg></div>
         <div class="srv-name">תאונות אישיות</div>
         <div class="srv-desc">כיסוי לאירועי תאונה שגורמים לנכות, אשפוז או אובדן הכנסה.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
       <div class="srv-card fade-in" onclick="openModal('disability')">
         <div class="srv-tag">חשוב</div>
-        <div class="srv-icon">🛡️</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5V11c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V5.5L12 3Z"/><path d="M9 11.5l2 2 4-4"/></svg></div>
         <div class="srv-name">אובדן כושר עבודה</div>
         <div class="srv-desc">קצבה חודשית אם לא תוכל לעבוד עקב מחלה או תאונה — לעצמאים ולשכירים.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('ambulatory')">
-        <div class="srv-icon">💉</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v4.5a4 4 0 0 0 8 0V3"/><path d="M10 15.5a4.5 4.5 0 0 0 9 0V14"/><circle cx="19" cy="12" r="2"/></svg></div>
         <div class="srv-name">ביטוח אמבולטורי</div>
         <div class="srv-desc">בדיקות, ייעוצים ואבחונים — ללא הצהרת בריאות וללא חיתום רפואי.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('dental')">
-        <div class="srv-icon">🦷</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5.5c-1.5-1-3-1.5-4.5-1C5.4 5.2 4.5 7 4.7 9.4c.2 2 .8 3.4 1.2 5.4.4 1.8.6 4.7 2 4.7 1.3 0 1.3-3 2.3-4.3.5-.6 1-.9 1.8-.9s1.3.3 1.8.9c1 1.3 1 4.3 2.3 4.3 1.4 0 1.6-2.9 2-4.7.4-2 1-3.4 1.2-5.4.2-2.4-.7-4.2-2.8-4.9-1.5-.5-3 0-4.5 1Z"/></svg></div>
         <div class="srv-name">ביטוח שיניים</div>
         <div class="srv-desc">טיפולים משמרים, שורש, כתרים ושתלים — בהשתתפות עצמית מופחתת.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('keren')">
-        <div class="srv-icon">🎓</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 12 5l9 3.5L12 12 3 8.5Z"/><path d="M7 10.3V14.5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4.2"/><path d="M21 8.5v5"/></svg></div>
         <div class="srv-name">קרן השתלמות לעצמאיים</div>
         <div class="srv-desc">חיסכון נזיל עם הטבת מס ופטור ממס רווחי הון — האפיק המשתלם בישראל.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
       <div class="srv-card fade-in" onclick="openModal('claims')">
-        <div class="srv-icon">🤝</div>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h6.5L19 8.5V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M13 3v5h5"/><path d="M9 14.5l2 2 3.5-3.5"/></svg></div>
         <div class="srv-name">ליווי בתביעות מורכבות</div>
         <div class="srv-desc">לא נשארים לבד מול חברת הביטוח — ליווי מלא עד קבלת הפיצוי.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
@@ -1308,7 +1317,7 @@
 </footer>
 
 <!-- ══ FLOATING WA ══ -->
-<a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לשיחת+ייעוץ" class="float-wa" target="_blank">💬</a>
+<a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לשיחת+ייעוץ" class="float-wa" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.1.1-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a2.7 2.7 0 0 0-.8 2c0 1.2.9 2.3 1 2.5.1.2 1.7 2.7 4.2 3.7 1.5.6 2.1.7 2.8.6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.4-.2Z"/></svg></a>
 
 <!-- ══════════════════════════════════
      MODALS — Service Details
@@ -1318,7 +1327,7 @@
 <div class="modal-overlay" id="modal-life" onclick="closeModalOut(event,'modal-life')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">❤️</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5C5.5 16.3 3 12 4.4 8.3 5.6 5 9.4 4.6 12 7.4 14.6 4.6 18.4 5 19.6 8.3 21 12 18.5 16.3 12 20.5Z"/></svg></div>
       <div><div class="modal-title">ביטוח חיים</div><div class="modal-subtitle">הגנה כלכלית למשפחתך</div></div>
       <div class="modal-close" onclick="closeModal('modal-life')">✕</div>
     </div>
@@ -1343,8 +1352,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> ביטוח חיים הוא הדבר הכי זול שתוכל לקנות לשקט הנפשי של משפחתך. פרמיה חודשית של כמה עשרות שקלים יכולה לתת כיסוי של מאות אלפי שקלים.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+חיים" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+חיים" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1354,7 +1363,7 @@
 <div class="modal-overlay" id="modal-health" onclick="closeModalOut(event,'modal-health')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🏥</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg></div>
       <div><div class="modal-title">ביטוח בריאות</div><div class="modal-subtitle">רפואה פרטית ללא תורים ארוכים</div></div>
       <div class="modal-close" onclick="closeModal('modal-health')">✕</div>
     </div>
@@ -1380,8 +1389,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> ביטוח בריאות הוא ביטוח שכדאי לקנות כשאתה בריא. ברגע שיש בעיה רפואית — כבר אי אפשר להצטרף בלי אי-הכללה. אל תחכה.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+בריאות" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+בריאות" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1391,7 +1400,7 @@
 <div class="modal-overlay" id="modal-pension" onclick="closeModalOut(event,'modal-pension')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">📈</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16l5.5-5.5 3.5 3.5L21 5"/><path d="M15 5h6v6"/></svg></div>
       <div><div class="modal-title">פנסיה וביטוח מנהלים</div><div class="modal-subtitle">תכנון העתיד הכלכלי שלך</div></div>
       <div class="modal-close" onclick="closeModal('modal-pension')">✕</div>
     </div>
@@ -1416,8 +1425,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> ישראלים רבים מאבדים מאות אלפי שקלים על דמי ניהול גבוהים מדי. שיחה של 30 דקות עלולה לחסוך לך הון.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לבדיקת+תיק+הפנסיה+שלי" class="btn btn-wa">💬 לבדיקת תיק</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לבדיקת+תיק+הפנסיה+שלי" class="btn btn-wa">לבדיקת תיק</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1427,7 +1436,7 @@
 <div class="modal-overlay" id="modal-home" onclick="closeModalOut(event,'modal-home')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🏠</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></svg></div>
       <div><div class="modal-title">ביטוח דירה</div><div class="modal-subtitle">הגנה על הנכס הכי יקר שלך</div></div>
       <div class="modal-close" onclick="closeModal('modal-home')">✕</div>
     </div>
@@ -1453,8 +1462,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> רוב האנשים מבוטחים בחסר — כלומר, סכום הביטוח נמוך מערך הנכס האמיתי. בדיקה מקצועית של סכום הכיסוי חשובה לא פחות מגובה הפרמיה.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+דירה" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+דירה" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1464,7 +1473,7 @@
 <div class="modal-overlay" id="modal-car" onclick="closeModalOut(event,'modal-car')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🚗</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="6" rx="2"/><path d="M6 11l2-4h8l2 4"/><circle cx="8" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/></svg></div>
       <div><div class="modal-title">ביטוח רכב</div><div class="modal-subtitle">חובה, מקיף ואחריות</div></div>
       <div class="modal-close" onclick="closeModal('modal-car')">✕</div>
     </div>
@@ -1491,8 +1500,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> לפני חידוש הביטוח — השווה הצעות. אני משווה עבורך בין חברות רבות ומוצא את הכיסוי הטוב ביותר במחיר הנמוך ביותר.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+רכב" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+רכב" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1502,7 +1511,7 @@
 <div class="modal-overlay" id="modal-business" onclick="closeModalOut(event,'modal-business')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🏢</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16"/><path d="M14 10h5a1 1 0 0 1 1 1v10"/><path d="M3 21h18"/><path d="M7 8h3M7 12h3M7 16h3"/></svg></div>
       <div><div class="modal-title">ביטוח עסקי</div><div class="modal-subtitle">הגנה מקיפה לעסק שלך</div></div>
       <div class="modal-close" onclick="closeModal('modal-business')">✕</div>
     </div>
@@ -1530,8 +1539,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> לא כל ביטוח עסקי מתאים לכל עסק. אנחנו בונים פוליסה שמותאמת בדיוק לסוג העסק שלך, לגודלו ולסיכונים הספציפיים שלו.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+עסקי" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+עסקי" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1541,7 +1550,7 @@
 <div class="modal-overlay" id="modal-savings" onclick="closeModalOut(event,'modal-savings')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">💰</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7" ry="3"/><path d="M5 6.5v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/><path d="M5 11.5v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/></svg></div>
       <div><div class="modal-title">חיסכון והשקעות</div><div class="modal-subtitle">כסף שעובד בשבילך</div></div>
       <div class="modal-close" onclick="closeModal('modal-savings')">✕</div>
     </div>
@@ -1565,8 +1574,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> קרן השתלמות היא המוצר הכי משתלם לשכיר — הטבת מס + תשואה גבוהה + נגישות. אם אין לך, אנחנו חייבים לדבר.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לייעוץ+בנושא+חיסכון+והשקעות" class="btn btn-wa">💬 לייעוץ חיסכון</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לייעוץ+בנושא+חיסכון+והשקעות" class="btn btn-wa">לייעוץ חיסכון</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1576,7 +1585,7 @@
 <div class="modal-overlay" id="modal-accident" onclick="closeModalOut(event,'modal-accident')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🩺</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5V11c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V5.5L12 3Z"/><path d="M12 8.5v5M9.5 11h5"/></svg></div>
       <div><div class="modal-title">ביטוח תאונות אישיות</div><div class="modal-subtitle">כיסוי לאירועים בלתי צפויים</div></div>
       <div class="modal-close" onclick="closeModal('modal-accident')">✕</div>
     </div>
@@ -1602,8 +1611,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> ביטוח תאונות אישיות הוא אחד מהביטוחים הזולים ביותר. פרמיה של כמה עשרות שקלים בחודש יכולה לתת כיסוי של מאות אלפים.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+תאונות+אישיות" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+תאונות+אישיות" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1613,7 +1622,7 @@
 <div class="modal-overlay" id="modal-disability" onclick="closeModalOut(event,'modal-disability')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🛡️</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5V11c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V5.5L12 3Z"/><path d="M9 11.5l2 2 4-4"/></svg></div>
       <div><div class="modal-title">ביטוח אובדן כושר עבודה</div><div class="modal-subtitle">ההכנסה שלך מבוטחת</div></div>
       <div class="modal-close" onclick="closeModal('modal-disability')">✕</div>
     </div>
@@ -1636,8 +1645,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> כושר העבודה שלך הוא מקור ההכנסה לכל התוכניות הכלכליות שלך. בלעדיו הכל מתערער — לכן זה אחד הביטוחים החשובים ביותר.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+אובדן+כושר+עבודה" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+אובדן+כושר+עבודה" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1647,7 +1656,7 @@
 <div class="modal-overlay" id="modal-ambulatory" onclick="closeModalOut(event,'modal-ambulatory')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">💉</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v4.5a4 4 0 0 0 8 0V3"/><path d="M10 15.5a4.5 4.5 0 0 0 9 0V14"/><circle cx="19" cy="12" r="2"/></svg></div>
       <div><div class="modal-title">ביטוח אמבולטורי</div><div class="modal-subtitle">בריאות בהישג יד — בלי חיתום</div></div>
       <div class="modal-close" onclick="closeModal('modal-ambulatory')">✕</div>
     </div>
@@ -1670,8 +1679,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> זהו פתרון מצוין למי שנדחה או הוחרג מביטוח בריאות רגיל — כאן מתקבלים ללא הצהרת בריאות.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+אמבולטורי" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+אמבולטורי" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1681,7 +1690,7 @@
 <div class="modal-overlay" id="modal-dental" onclick="closeModalOut(event,'modal-dental')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🦷</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5.5c-1.5-1-3-1.5-4.5-1C5.4 5.2 4.5 7 4.7 9.4c.2 2 .8 3.4 1.2 5.4.4 1.8.6 4.7 2 4.7 1.3 0 1.3-3 2.3-4.3.5-.6 1-.9 1.8-.9s1.3.3 1.8.9c1 1.3 1 4.3 2.3 4.3 1.4 0 1.6-2.9 2-4.7.4-2 1-3.4 1.2-5.4.2-2.4-.7-4.2-2.8-4.9-1.5-.5-3 0-4.5 1Z"/></svg></div>
       <div><div class="modal-title">ביטוח שיניים</div><div class="modal-subtitle">חיוך בריא, בלי הפתעות בחשבון</div></div>
       <div class="modal-close" onclick="closeModal('modal-dental')">✕</div>
     </div>
@@ -1698,8 +1707,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> טיפול שורש עם כתר עולה אלפי שקלים. ביטוח שיניים חוסך הון לאורך השנים ושומר על בריאות הפה.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+שיניים" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+שיניים" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1709,7 +1718,7 @@
 <div class="modal-overlay" id="modal-keren" onclick="closeModalOut(event,'modal-keren')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🎓</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 12 5l9 3.5L12 12 3 8.5Z"/><path d="M7 10.3V14.5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4.2"/><path d="M21 8.5v5"/></svg></div>
       <div><div class="modal-title">קרן השתלמות לעצמאיים</div><div class="modal-subtitle">חיסכון נזיל עם הטבת מס</div></div>
       <div class="modal-close" onclick="closeModal('modal-keren')">✕</div>
     </div>
@@ -1726,8 +1735,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> כל עצמאי שלא מנצל את קרן ההשתלמות פשוט משאיר כסף על השולחן. בוא נבנה לך תוכנית שמתאימה בדיוק לך.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לקרן+השתלמות+לעצמאיים" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לקרן+השתלמות+לעצמאיים" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
@@ -1737,7 +1746,7 @@
 <div class="modal-overlay" id="modal-claims" onclick="closeModalOut(event,'modal-claims')">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-icon">🤝</div>
+      <div class="modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h6.5L19 8.5V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M13 3v5h5"/><path d="M9 14.5l2 2 3.5-3.5"/></svg></div>
       <div><div class="modal-title">ליווי בתביעות מורכבות</div><div class="modal-subtitle">לא נשארים לבד מול חברת הביטוח</div></div>
       <div class="modal-close" onclick="closeModal('modal-claims')">✕</div>
     </div>
@@ -1754,8 +1763,8 @@
       </ul>
       <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> רוב המבוטחים לא מודעים לכיסויים שמגיעים להם. ליווי מקצועי הוא לעיתים ההבדל בין דחייה לבין פיצוי מלא.</p></div>
       <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לליווי+בתביעה" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לליווי+בתביעה" class="btn btn-wa">קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">התקשר עכשיו</a>
       </div>
     </div>
   </div>
