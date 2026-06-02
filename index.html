@@ -640,6 +640,28 @@
     .team-contact .tc-wa{background:linear-gradient(135deg,#25d366,#0e7a63);color:#fff;}
     .team-contact a:hover{transform:translateY(-2px);box-shadow:0 8px 18px -8px rgba(31,107,209,.4);}
 
+    /* ══ OFFICES VIDEO ══ */
+    #offices{background:linear-gradient(180deg,transparent,rgba(31,107,209,.05));}
+    .video-frame{position:relative;flex:0 0 auto;width:min(82vw,330px);border-radius:24px;overflow:hidden;background:#0a2647;box-shadow:0 44px 100px -36px rgba(16,42,84,.55);}
+    .video-frame::after{content:'';position:absolute;inset:0;border-radius:24px;border:1px solid rgba(255,255,255,.12);pointer-events:none;z-index:4;}
+    .video-frame video{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;animation:kenburns 26s ease-in-out infinite alternate;}
+    @keyframes kenburns{0%{transform:scale(1.001);}100%{transform:scale(1.07);}}
+    .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,24,46,.10) 0%,transparent 28%,transparent 60%,rgba(8,24,46,.6) 100%);pointer-events:none;z-index:2;}
+    .video-cap{position:absolute;bottom:18px;right:24px;color:#fff;font-weight:800;font-size:clamp(14px,2vw,18px);letter-spacing:.3px;text-shadow:0 2px 12px rgba(0,0,0,.6);z-index:3;}
+    .vf-corner{position:absolute;width:34px;height:34px;border:2.5px solid rgba(255,255,255,.7);z-index:3;pointer-events:none;}
+    .vf-tl{top:16px;left:16px;border-right:none;border-bottom:none;border-radius:9px 0 0 0;}
+    .vf-tr{top:16px;right:16px;border-left:none;border-bottom:none;border-radius:0 9px 0 0;}
+    .vf-bl{bottom:16px;left:16px;border-right:none;border-top:none;border-radius:0 0 0 9px;}
+    .vf-br{bottom:16px;right:16px;border-left:none;border-top:none;border-radius:0 0 9px 0;}
+    .video-sound{position:absolute;bottom:15px;left:18px;z-index:5;background:rgba(8,24,46,.55);color:#fff;border:1px solid rgba(255,255,255,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:7px 14px;border-radius:30px;font-family:'Heebo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s,transform .2s;}
+    .video-sound:hover{background:rgba(31,107,209,.75);transform:translateY(-1px);}
+    .offices-split{display:flex;gap:46px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:44px;}
+    .offices-text{flex:1 1 340px;max-width:480px;text-align:right;}
+    .offices-lead{font-size:clamp(15px,2.2vw,18px);line-height:1.85;color:var(--text);margin-bottom:22px;}
+    .offices-list{list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:12px;}
+    .offices-list li{position:relative;padding-right:30px;font-size:15px;font-weight:600;color:var(--white);}
+    .offices-list li::before{content:'✓';position:absolute;right:0;top:1px;width:21px;height:21px;border-radius:50%;background:var(--grad);color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+
     /* ══ TRUST STRIP (madanes-style grayscale logos) ══ */
     .trust-strip{padding:40px 24px 6px;text-align:center;border-bottom:1px solid var(--hairline);}
     .trust-strip .trust-cap{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:22px;}
@@ -714,6 +736,7 @@
   <div class="nav-logo"><img class="brand-logo" src="images/logo.png" alt="יהב סוכנות לביטוח"></div>
   <div class="nav-links">
     <a href="#about">מי אנחנו</a>
+    <a href="#offices">המשרדים</a>
     <a href="#services">שירותים</a>
     <a href="#testimonials">המלצות</a>
     <a href="#media">תקשורת</a>
@@ -830,6 +853,34 @@
   </div>
 </section>
 
+<!-- ══ OFFICES VIDEO ══ -->
+<section id="offices" class="section">
+  <div class="section-inner">
+    <div class="sec-label">סיור במשרדים</div>
+    <h2 class="sec-title">המשרדים שלנו</h2>
+    <p class="sec-sub">הצצה פנימה — הבית שבו דואגים לכם, בלב נתיבות</p>
+    <div class="offices-split">
+      <div class="offices-text fade-in">
+        <p class="offices-lead">המשרדים שלנו נבנו סביב רעיון אחד: שתרגישו בבית. מרחב מזמין, צוות מקצועי שמכיר אתכם בשם, ופגישות אישיות שבהן יושבים יחד ובונים את העתיד הכלכלי שלכם — בלי לחץ ובלי אותיות קטנות.</p>
+        <ul class="offices-list">
+          <li>פגישות אישיות פנים אל פנים</li>
+          <li>צוות מקצועי, חם וזמין</li>
+          <li>ליווי מלא משלב הייעוץ ועד התביעה</li>
+        </ul>
+        <a href="#contact" class="btn btn-orange">לתיאום פגישה</a>
+      </div>
+      <div class="video-frame fade-in">
+        <span class="vf-corner vf-tl"></span><span class="vf-corner vf-tr"></span>
+        <span class="vf-corner vf-bl"></span><span class="vf-corner vf-br"></span>
+        <video src="videos/office.mp4" autoplay muted loop playsinline preload="metadata" poster="images/office.jpg"></video>
+        <div class="video-overlay"></div>
+        <div class="video-cap">יהב · נתיבות</div>
+        <button class="video-sound" type="button" aria-label="הפעלת קול">🔊 קול</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ SERVICES ══ -->
 <section id="services" class="section">
   <div class="section-inner">
@@ -882,13 +933,6 @@
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
-      <div class="srv-card fade-in" onclick="openModal('nursing')">
-        <div class="srv-icon">🧓</div>
-        <div class="srv-name">ביטוח סיעוד</div>
-        <div class="srv-desc">כיסוי למצב סיעודי — כי אף אחד לא רוצה להיות נטל על המשפחה.</div>
-        <div class="srv-arrow">לפירוט מלא ←</div>
-      </div>
-
       <div class="srv-card fade-in" onclick="openModal('savings')">
         <div class="srv-icon">💰</div>
         <div class="srv-name">חיסכון והשקעות</div>
@@ -900,6 +944,41 @@
         <div class="srv-icon">🩺</div>
         <div class="srv-name">תאונות אישיות</div>
         <div class="srv-desc">כיסוי לאירועי תאונה שגורמים לנכות, אשפוז או אובדן הכנסה.</div>
+        <div class="srv-arrow">לפירוט מלא ←</div>
+      </div>
+      <div class="srv-card fade-in" onclick="openModal('disability')">
+        <div class="srv-tag">חשוב</div>
+        <div class="srv-icon">🛡️</div>
+        <div class="srv-name">אובדן כושר עבודה</div>
+        <div class="srv-desc">קצבה חודשית אם לא תוכל לעבוד עקב מחלה או תאונה — לעצמאים ולשכירים.</div>
+        <div class="srv-arrow">לפירוט מלא ←</div>
+      </div>
+
+      <div class="srv-card fade-in" onclick="openModal('ambulatory')">
+        <div class="srv-icon">💉</div>
+        <div class="srv-name">ביטוח אמבולטורי</div>
+        <div class="srv-desc">בדיקות, ייעוצים ואבחונים — ללא הצהרת בריאות וללא חיתום רפואי.</div>
+        <div class="srv-arrow">לפירוט מלא ←</div>
+      </div>
+
+      <div class="srv-card fade-in" onclick="openModal('dental')">
+        <div class="srv-icon">🦷</div>
+        <div class="srv-name">ביטוח שיניים</div>
+        <div class="srv-desc">טיפולים משמרים, שורש, כתרים ושתלים — בהשתתפות עצמית מופחתת.</div>
+        <div class="srv-arrow">לפירוט מלא ←</div>
+      </div>
+
+      <div class="srv-card fade-in" onclick="openModal('keren')">
+        <div class="srv-icon">🎓</div>
+        <div class="srv-name">קרן השתלמות לעצמאיים</div>
+        <div class="srv-desc">חיסכון נזיל עם הטבת מס ופטור ממס רווחי הון — האפיק המשתלם בישראל.</div>
+        <div class="srv-arrow">לפירוט מלא ←</div>
+      </div>
+
+      <div class="srv-card fade-in" onclick="openModal('claims')">
+        <div class="srv-icon">🤝</div>
+        <div class="srv-name">ליווי בתביעות מורכבות</div>
+        <div class="srv-desc">לא נשארים לבד מול חברת הביטוח — ליווי מלא עד קבלת הפיצוי.</div>
         <div class="srv-arrow">לפירוט מלא ←</div>
       </div>
 
@@ -1104,6 +1183,29 @@
           <div class="contact-arrow">←</div>
         </a>
 
+        <a href="https://wa.me/972534443490?text=שלום+רועי,+אשמח+לשיחת+ייעוץ" class="contact-row">
+          <div class="contact-icon" style="background:transparent;border:none;">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+              <rect width="40" height="40" rx="10" fill="#25D366"/>
+              <path d="M20 9C13.9 9 9 13.9 9 20C9 22.1 9.6 24.1 10.6 25.8L9.3 31L14.7 29.7C16.3 30.6 18.1 31.1 20 31.1C26.1 31.1 31 26.2 31 20.1C31 13.9 26.1 9 20 9Z" fill="white"/>
+            </svg>
+          </div>
+          <div><div class="contact-lbl">רועי כהן · סוכן</div><div class="contact-val" dir="ltr">053-444-3490</div></div>
+          <div class="contact-arrow">←</div>
+        </a>
+
+        <a href="https://wa.me/972526503101?text=שלום+שקמה,+אשמח+לשיחת+ייעוץ" class="contact-row">
+          <div class="contact-icon" style="background:transparent;border:none;">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+              <rect width="40" height="40" rx="10" fill="#25D366"/>
+              <path d="M20 9C13.9 9 9 13.9 9 20C9 22.1 9.6 24.1 10.6 25.8L9.3 31L14.7 29.7C16.3 30.6 18.1 31.1 20 31.1C26.1 31.1 31 26.2 31 20.1C31 13.9 26.1 9 20 9Z" fill="white"/>
+            </svg>
+          </div>
+          <div><div class="contact-lbl">שקמה טויטו · סוכנת</div><div class="contact-val" dir="ltr">052-650-3101</div></div>
+          <div class="contact-arrow">←</div>
+        </a>
+
+
         <a href="tel:0505554446" class="contact-row">
           <div class="contact-icon" style="background:transparent;border:none;">
             <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
@@ -1111,7 +1213,7 @@
               <path d="M27.5 24.5L24.9 22C24.5 21.6 23.8 21.6 23.4 22L22.1 23.3C21.9 23.5 21.6 23.5 21.4 23.4C20.4 22.8 18.9 21.5 17.7 20.3C16.5 19.1 15.2 17.6 14.6 16.6C14.5 16.4 14.5 16.1 14.7 15.9L16 14.6C16.4 14.2 16.4 13.5 16 13.1L13.5 10.5C13.1 10.1 12.4 10.1 12 10.5L10.9 11.6C9.9 12.6 9.5 13.9 9.8 15.2C10.5 18.4 13.1 22.4 16.3 25.7C19.6 28.9 23.6 31.5 26.8 32.2C28.1 32.5 29.4 32.1 30.4 31.1L31.5 30C31.9 29.6 31.9 28.9 31.5 28.5L27.5 24.5Z" fill="white"/>
             </svg>
           </div>
-          <div><div class="contact-lbl">נייד</div><div class="contact-val" dir="ltr">050-555-4446</div></div>
+          <div><div class="contact-lbl">מאיר כהן · נייד</div><div class="contact-val" dir="ltr">050-555-4446</div></div>
           <div class="contact-arrow">←</div>
         </a>
 
@@ -1435,41 +1537,6 @@
   </div>
 </div>
 
-<!-- NURSING CARE -->
-<div class="modal-overlay" id="modal-nursing" onclick="closeModalOut(event,'modal-nursing')">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-icon">🧓</div>
-      <div><div class="modal-title">ביטוח סיעוד</div><div class="modal-subtitle">כי אף אחד לא רוצה להיות נטל</div></div>
-      <div class="modal-close" onclick="closeModal('modal-nursing')">✕</div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-section-title">מה זה ביטוח סיעוד?</div>
-      <p class="modal-text">ביטוח סיעוד משלם קצבה חודשית קבועה במקרה שהמבוטח נקלע למצב סיעודי — כלומר, לא מסוגל לבצע לפחות 3 מתוך 6 פעולות יום-יומיות (אכילה, לבישה, רחצה, ניידות, שליטה על הסוגרים, עמידה/שכיבה).</p>
-      <div class="modal-section-title">מה הכיסוי כולל?</div>
-      <ul class="coverage-list">
-        <li>קצבה חודשית קבועה (3,000–10,000 ₪ ויותר)</li>
-        <li>כיסוי לסיעוד בבית (מטפל/ת פרטי)</li>
-        <li>כיסוי לסיעוד במוסד</li>
-        <li>תשלום מגיל 60-65 ומעלה (לפי הפוליסה)</li>
-        <li>תקופת תשלום: 5 שנים, 7 שנים, לכל החיים — לפי בחירה</li>
-        <li>אפשרות לביטוח גם בגילאים מבוגרים</li>
-      </ul>
-      <div class="modal-section-title">למה כדאי לקנות מוקדם?</div>
-      <ul class="coverage-list">
-        <li>פרמיה נמוכה יותר ככל שמצטרפים צעיר יותר</li>
-        <li>ביטוח בריאות תקין — אחרת יכול להיות אי-הכללה</li>
-        <li>קרן הסיעוד הממשלתית מכסה מעט מאד — ביטוח פרטי הכרחי</li>
-      </ul>
-      <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> ישראל מזדקנת. עלות מטפל פרטי היא 8,000–15,000 ₪ בחודש. ביטוח סיעוד זו ההשקעה הכי חכמה שתעשה לעצמך ולמשפחתך.</p></div>
-      <div class="modal-cta">
-        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+סיעוד" class="btn btn-wa">💬 קבל הצעה</a>
-        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- SAVINGS -->
 <div class="modal-overlay" id="modal-savings" onclick="closeModalOut(event,'modal-savings')">
   <div class="modal">
@@ -1536,6 +1603,158 @@
       <div class="info-box"><p>💡 <strong>טיפ של מאיר:</strong> ביטוח תאונות אישיות הוא אחד מהביטוחים הזולים ביותר. פרמיה של כמה עשרות שקלים בחודש יכולה לתת כיסוי של מאות אלפים.</p></div>
       <div class="modal-cta">
         <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לקבל+הצעה+לביטוח+תאונות+אישיות" class="btn btn-wa">💬 קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DISABILITY -->
+<div class="modal-overlay" id="modal-disability" onclick="closeModalOut(event,'modal-disability')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon">🛡️</div>
+      <div><div class="modal-title">ביטוח אובדן כושר עבודה</div><div class="modal-subtitle">ההכנסה שלך מבוטחת</div></div>
+      <div class="modal-close" onclick="closeModal('modal-disability')">✕</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">מה זה אובדן כושר עבודה?</div>
+      <p class="modal-text">ביטוח אובדן כושר עבודה מבטיח לך קצבה חודשית קבועה אם לא תוכל להמשיך לעבוד עקב מחלה או תאונה. הכיסוי מתאים גם לעצמאים וגם לשכירים, ומותאם לרמת ההכנסה ולעיסוק שלך.</p>
+      <div class="modal-section-title">מה הכיסוי כולל?</div>
+      <ul class="coverage-list">
+        <li>קצבה חודשית של עד 75% מההכנסה</li>
+        <li>כיסוי לעצמאים ולשכירים כאחד</li>
+        <li>אפשרות להרחבת "עיסוק ספציפי"</li>
+        <li>פטור מתשלום פרמיה בזמן אובדן הכושר</li>
+        <li>כיסוי ממושך עד גיל הפרישה</li>
+      </ul>
+      <div class="modal-section-title">למה זה קריטי?</div>
+      <ul class="coverage-list">
+        <li>כושר העבודה הוא הנכס הכלכלי הגדול ביותר שלך</li>
+        <li>הביטוח הלאומי מכסה חלקית בלבד</li>
+        <li>שומר על רמת החיים של המשפחה גם במצב משברי</li>
+      </ul>
+      <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> כושר העבודה שלך הוא מקור ההכנסה לכל התוכניות הכלכליות שלך. בלעדיו הכל מתערער — לכן זה אחד הביטוחים החשובים ביותר.</p></div>
+      <div class="modal-cta">
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+אובדן+כושר+עבודה" class="btn btn-wa">💬 קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AMBULATORY -->
+<div class="modal-overlay" id="modal-ambulatory" onclick="closeModalOut(event,'modal-ambulatory')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon">💉</div>
+      <div><div class="modal-title">ביטוח אמבולטורי</div><div class="modal-subtitle">בריאות בהישג יד — בלי חיתום</div></div>
+      <div class="modal-close" onclick="closeModal('modal-ambulatory')">✕</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">מה זה ביטוח אמבולטורי?</div>
+      <p class="modal-text">ביטוח אמבולטורי מכסה שירותים רפואיים שאינם כרוכים באשפוז — ייעוצים אצל מומחים, בדיקות אבחנתיות והתחייבויות כספיות. היתרון הגדול: הצטרפות ללא הצהרת בריאות וללא חיתום רפואי.</p>
+      <div class="modal-section-title">מה הכיסוי כולל?</div>
+      <ul class="coverage-list">
+        <li>ייעוצים אצל רופאים מומחים</li>
+        <li>בדיקות אבחנתיות (MRI, CT, אולטרסאונד)</li>
+        <li>בדיקות גנטיות והדמיה</li>
+        <li>חוות דעת רפואית שנייה</li>
+        <li>כתבי שירות ונלווים רפואיים</li>
+      </ul>
+      <div class="modal-section-title">למי זה מתאים במיוחד?</div>
+      <ul class="coverage-list">
+        <li>מי שמתקשה להתקבל לביטוח בריאות בגלל מצב רפואי קיים</li>
+        <li>משפחות שרוצות נגישות מהירה לרפואה פרטית</li>
+        <li>כל מי שרוצה כיסוי בלי חיתום מסובך</li>
+      </ul>
+      <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> זהו פתרון מצוין למי שנדחה או הוחרג מביטוח בריאות רגיל — כאן מתקבלים ללא הצהרת בריאות.</p></div>
+      <div class="modal-cta">
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+אמבולטורי" class="btn btn-wa">💬 קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DENTAL -->
+<div class="modal-overlay" id="modal-dental" onclick="closeModalOut(event,'modal-dental')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon">🦷</div>
+      <div><div class="modal-title">ביטוח שיניים</div><div class="modal-subtitle">חיוך בריא, בלי הפתעות בחשבון</div></div>
+      <div class="modal-close" onclick="closeModal('modal-dental')">✕</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">מה זה ביטוח שיניים?</div>
+      <p class="modal-text">ביטוח שיניים מכסה מגוון רחב של טיפולי שיניים — משמרים ומשקמים — בהשתתפות עצמית מופחתת, כך שתוכל לטפל בשיניים בלי לדאוג מהעלות.</p>
+      <div class="modal-section-title">מה הכיסוי כולל?</div>
+      <ul class="coverage-list">
+        <li>טיפולים משמרים: סתימות, ניקוי אבן, צילומים</li>
+        <li>טיפולי שורש</li>
+        <li>כתרים, גשרים ותותבות</li>
+        <li>שתלים דנטליים</li>
+        <li>יישור שיניים (אורתודונטיה) — לפי הפוליסה</li>
+      </ul>
+      <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> טיפול שורש עם כתר עולה אלפי שקלים. ביטוח שיניים חוסך הון לאורך השנים ושומר על בריאות הפה.</p></div>
+      <div class="modal-cta">
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לביטוח+שיניים" class="btn btn-wa">💬 קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEREN -->
+<div class="modal-overlay" id="modal-keren" onclick="closeModalOut(event,'modal-keren')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon">🎓</div>
+      <div><div class="modal-title">קרן השתלמות לעצמאיים</div><div class="modal-subtitle">חיסכון נזיל עם הטבת מס</div></div>
+      <div class="modal-close" onclick="closeModal('modal-keren')">✕</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">מה זו קרן השתלמות לעצמאי?</div>
+      <p class="modal-text">קרן השתלמות היא אפיק החיסכון המשתלם ביותר בישראל לעצמאים: ההפקדה מוכרת לצורכי מס, הרווחים פטורים ממס רווחי הון (עד התקרה), והכסף הופך נזיל לאחר 6 שנים.</p>
+      <div class="modal-section-title">היתרונות המרכזיים</div>
+      <ul class="coverage-list">
+        <li>הפקדה מוכרת כהוצאה לצורכי מס</li>
+        <li>פטור ממס רווחי הון (עד התקרה החוקית)</li>
+        <li>נזילות מלאה לאחר 6 שנים — לכל מטרה</li>
+        <li>בחירת מסלול השקעה לפי רמת הסיכון</li>
+        <li>כלי מצוין לחיסכון לטווח בינוני-ארוך</li>
+      </ul>
+      <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> כל עצמאי שלא מנצל את קרן ההשתלמות פשוט משאיר כסף על השולחן. בוא נבנה לך תוכנית שמתאימה בדיוק לך.</p></div>
+      <div class="modal-cta">
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לקרן+השתלמות+לעצמאיים" class="btn btn-wa">💬 קבל הצעה</a>
+        <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLAIMS -->
+<div class="modal-overlay" id="modal-claims" onclick="closeModalOut(event,'modal-claims')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-icon">🤝</div>
+      <div><div class="modal-title">ליווי בתביעות מורכבות</div><div class="modal-subtitle">לא נשארים לבד מול חברת הביטוח</div></div>
+      <div class="modal-close" onclick="closeModal('modal-claims')">✕</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">למה צריך ליווי בתביעה?</div>
+      <p class="modal-text">כשמגישים תביעה — במיוחד תביעת נכות, אובדן כושר עבודה או מקרה רפואי מורכב — חברות הביטוח לא תמיד משלמות בקלות. אנחנו עומדים לצידך ודואגים שתקבל כל שקל שמגיע לך.</p>
+      <div class="modal-section-title">מה הליווי כולל?</div>
+      <ul class="coverage-list">
+        <li>בדיקת זכאות וכל הכיסויים הקיימים</li>
+        <li>הכנה והגשה מסודרת של התביעה</li>
+        <li>ייצוג וליווי מול חברת הביטוח</li>
+        <li>מעקב רציף עד קבלת התשלום</li>
+        <li>טיפול בערעור במקרה של דחייה</li>
+      </ul>
+      <div class="info-box"><p>💡 <strong>חשוב לדעת:</strong> רוב המבוטחים לא מודעים לכיסויים שמגיעים להם. ליווי מקצועי הוא לעיתים ההבדל בין דחייה לבין פיצוי מלא.</p></div>
+      <div class="modal-cta">
+        <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לקבל+הצעה+לליווי+בתביעה" class="btn btn-wa">💬 קבל הצעה</a>
         <a href="tel:0505554446" class="btn btn-orange">📞 התקשר עכשיו</a>
       </div>
     </div>
@@ -1614,6 +1833,16 @@
   const navEl = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     navEl.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Office video sound toggle
+  document.querySelectorAll('.video-sound').forEach(function(btn){
+    var v = btn.closest('.video-frame').querySelector('video');
+    btn.addEventListener('click', function(){
+      v.muted = !v.muted;
+      if(!v.muted){ v.play(); btn.textContent = '🔇 השתק'; }
+      else { btn.textContent = '🔊 קול'; }
+    });
   });
 
   // Graceful fallback for team photos not yet uploaded
