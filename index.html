@@ -102,6 +102,24 @@
       transition:transform .2s, box-shadow .2s;
     }
     .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px -4px rgba(31,107,209,.65);}
+    /* ══ MOBILE MENU / BURGER ══ */
+    .nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;background:transparent;border:none;cursor:pointer;padding:8px;z-index:210;}
+    .nav-burger span{display:block;height:2.5px;width:24px;background:var(--white);border-radius:2px;transition:transform .3s, opacity .3s;}
+    .nav-burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+    .nav-burger.open span:nth-child(2){opacity:0;}
+    .nav-burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+    .menu-backdrop{position:fixed;inset:0;background:rgba(8,20,40,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);z-index:204;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
+    .menu-backdrop.open{opacity:1;visibility:visible;}
+    .mobile-menu{position:fixed;top:0;right:0;bottom:0;width:min(80vw,320px);z-index:206;
+      background:linear-gradient(160deg,#0a2647,#103f7a);
+      display:flex;flex-direction:column;padding:90px 26px 28px;
+      transform:translateX(110%);transition:transform .4s cubic-bezier(.4,0,.2,1);
+      box-shadow:-24px 0 60px -20px rgba(0,0,0,.55);}
+    .mobile-menu.open{transform:translateX(0);}
+    .mobile-menu a{color:#fff;text-decoration:none;font-size:18px;font-weight:700;padding:15px 2px;border-bottom:1px solid rgba(255,255,255,.1);transition:color .2s;}
+    .mobile-menu a:hover{color:var(--lux-gold2);}
+    .mobile-menu .mm-cta{margin-top:20px;border:none;background:linear-gradient(135deg,#25d366,#0e7a63);text-align:center;border-radius:13px;padding:15px;box-shadow:0 8px 22px -8px rgba(37,211,102,.6);}
+    @media(min-width:769px){.mobile-menu,.menu-backdrop{display:none!important;}}
 
     /* ══ HERO ══ */
     #hero{
@@ -674,14 +692,18 @@
     /* ══ TRUST STRIP (madanes-style grayscale logos) ══ */
     .trust-strip{padding:40px 24px 6px;text-align:center;border-bottom:1px solid var(--hairline);}
     .trust-strip .trust-cap{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:22px;}
-    .trust-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 30px;max-width:980px;margin:0 auto;}
-    .trust-logos span{
-      font-size:clamp(15px,2.1vw,20px);font-weight:800;letter-spacing:-.3px;
-      color:#9aa7b8;filter:grayscale(1);opacity:.72;
-      transition:color .25s, opacity .25s, transform .25s;cursor:default;
-      white-space:nowrap;
-    }
-    .trust-logos span:hover{color:var(--orange);opacity:1;filter:none;transform:translateY(-2px);}
+    .logo-marquee{position:relative;overflow:hidden;max-width:1140px;margin:0 auto;padding:6px 0;
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+              mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+    .logo-track{display:flex;width:max-content;animation:logoScroll 40s linear infinite;}
+    .logo-marquee:hover .logo-track{animation-play-state:paused;}
+    @keyframes logoScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .logo-item{display:inline-flex;align-items:center;gap:11px;padding:0 32px;
+      color:#8b99ab;filter:grayscale(1);opacity:.7;white-space:nowrap;
+      transition:color .3s,opacity .3s,filter .3s;}
+    .logo-item:hover{color:var(--orange);opacity:1;filter:none;}
+    .lm-mark{width:26px;height:26px;flex-shrink:0;}
+    .lm-name{font-size:clamp(16px,2vw,21px);font-weight:800;letter-spacing:-.3px;}
 
     /* ══ NAVY CTA BAND (section rhythm) ══ */
     .cta-band{
@@ -715,27 +737,46 @@
     /* ══ RESPONSIVE ══ */
     @media(max-width:768px){
       .nav-links{display:none;}
-      .hero-aside{display:none;}
-      .section{padding:72px 20px;}
+      .nav-cta{display:none;}
+      .nav-burger{display:flex;}
+      .section{padding:74px 20px;}
       .stats-grid{grid-template-columns:repeat(2,1fr);}
       .stat-item{border-left:none;border-bottom:1px solid var(--hairline);}
       .stat-item:nth-child(odd){border-left:1px solid var(--hairline);}
       .stat-item:nth-child(3),.stat-item:nth-child(4){border-bottom:none;}
       .contact-grid{grid-template-columns:1fr;}
       .modal-header{flex-wrap:wrap;}
+      /* ---- mobile hero: centered brand lockup (כולל "ללכת על בטוח") ---- */
+      #hero{flex-direction:column;justify-content:center;text-align:center;padding:118px 22px 64px;}
+      #hero .hero-inner{align-items:center;max-width:100%;}
+      #hero .hero-name,#hero .hero-sub,#hero .hero-tagline,#hero .hero-badge{text-align:center;}
+      #hero .hero-trust,#hero .hero-btns{justify-content:center;}
+      .hero-aside{display:flex;position:static;transform:none;top:auto;right:auto;
+        width:auto;max-width:100%;margin:0 auto 20px;gap:10px;}
+      .hero-aside .ha-name{display:none;}
+      .ha-emblem{width:92px!important;height:92px!important;}
+      .ha-slogan{font-size:30px;animation-delay:.5s;}
+      .hero-name{font-size:30px;line-height:1.12;}
+      #hero .hero-scroll{display:none;}
+      .logo-item{padding:0 22px;}
+      .lm-name{font-size:17px;}
+      .offices-split{gap:26px;}
     }
     @media(max-width:480px){
       .hero-btns .btn{flex:1;justify-content:center;}
-      .hero-btns{flex-direction:column;width:100%;max-width:320px;margin:0 auto;}
-      .nav-logo span{display:none;}
+      .hero-btns{flex-direction:column;width:100%;max-width:330px;margin:0 auto;}
+      .ha-slogan{font-size:27px;}
+      .hero-name{font-size:27px;}
+      .hero-tagline{font-size:15px;}
+      .sec-title{font-size:26px;}
     }
     @media(prefers-reduced-motion:reduce){
       *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
     }
 
     /* Fade in animation */
-    .fade-in{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);}
-    .fade-in.visible{opacity:1;transform:translateY(0);}
+    .fade-in{opacity:0;transform:translateY(34px) scale(.985);filter:blur(3px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1),filter .9s ease;}
+    .fade-in.visible{opacity:1;transform:none;filter:none;}
   </style>
 </head>
 <body>
@@ -752,7 +793,18 @@
     <a href="#contact">צור קשר</a>
   </div>
   <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לשיחת+ייעוץ" class="nav-cta">WhatsApp</a>
+  <button class="nav-burger" id="navBurger" aria-label="תפריט" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
+<div class="menu-backdrop" id="menuBackdrop" onclick="closeMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">מי אנחנו</a>
+  <a href="#offices" onclick="closeMenu()">המשרדים</a>
+  <a href="#services" onclick="closeMenu()">שירותים</a>
+  <a href="#testimonials" onclick="closeMenu()">המלצות</a>
+  <a href="#media" onclick="closeMenu()">תקשורת</a>
+  <a href="#contact" onclick="closeMenu()">צור קשר</a>
+  <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום,+אשמח+לשיחת+ייעוץ" target="_blank" class="mm-cta" onclick="closeMenu()">דברו איתנו ב-WhatsApp</a>
+</div>
 
 <!-- ══ HERO ══ -->
 <section id="hero">
@@ -792,15 +844,25 @@
 <!-- ══ TRUST STRIP ══ -->
 <div class="trust-strip">
   <div class="trust-cap">עובדים מול כל חברות הביטוח והפיננסים המובילות</div>
-  <div class="trust-logos">
-    <span>הראל</span>
-    <span>מגדל</span>
-    <span>כלל ביטוח</span>
-    <span>מנורה מבטחים</span>
-    <span>הפניקס</span>
-    <span>איילון</span>
-    <span>הכשרה</span>
-    <span>ביטוח ישיר</span>
+  <div class="logo-marquee">
+    <div class="logo-track">
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19v-5M12 19V9M19 19V5"/></svg><span class="lm-name">הראל</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21V6l3-3 3 3v15"/><path d="M9 10h6M9 14h6"/></svg><span class="lm-name">מגדל</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><span class="lm-name">כלל ביטוח</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 9-7 9-7-9 7-9Z"/></svg><span class="lm-name">מנורה מבטחים</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a6 6 0 0 0 6-6c0-5-4-7-4-11-2 1.5-4.5 4-4.5 7.5 0 1.5 1 2.6 2.3 2.6"/></svg><span class="lm-name">הפניקס</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 11 11 5 19 5c0 8-6 14-14 14Z"/></svg><span class="lm-name">איילון</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5V11c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V5.5L12 3Z"/></svg><span class="lm-name">הכשרה</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M12 5l7 7-7 7"/></svg><span class="lm-name">ביטוח ישיר</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19v-5M12 19V9M19 19V5"/></svg><span class="lm-name">הראל</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21V6l3-3 3 3v15"/><path d="M9 10h6M9 14h6"/></svg><span class="lm-name">מגדל</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><span class="lm-name">כלל ביטוח</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 9-7 9-7-9 7-9Z"/></svg><span class="lm-name">מנורה מבטחים</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a6 6 0 0 0 6-6c0-5-4-7-4-11-2 1.5-4.5 4-4.5 7.5 0 1.5 1 2.6 2.3 2.6"/></svg><span class="lm-name">הפניקס</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19C5 11 11 5 19 5c0 8-6 14-14 14Z"/></svg><span class="lm-name">איילון</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 2.5V11c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V5.5L12 3Z"/></svg><span class="lm-name">הכשרה</span></div>
+      <div class="logo-item"><svg class="lm-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M12 5l7 7-7 7"/></svg><span class="lm-name">ביטוח ישיר</span></div>
+    </div>
   </div>
 </div>
 
@@ -1773,7 +1835,18 @@
 <!-- ══ JS ══ -->
 <script>
   // Modal open/close
-  function openModal(id) {
+  function toggleMenu(){
+    var m=document.getElementById('mobileMenu'),b=document.getElementById('navBurger'),bd=document.getElementById('menuBackdrop');
+    var open=m.classList.toggle('open'); b.classList.toggle('open',open); bd.classList.toggle('open',open);
+    document.body.style.overflow=open?'hidden':'';
+  }
+  function closeMenu(){
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('navBurger').classList.remove('open');
+    document.getElementById('menuBackdrop').classList.remove('open');
+    document.body.style.overflow='';
+  }
+    function openModal(id) {
     document.getElementById('modal-' + id).classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -1786,6 +1859,7 @@
   }
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
+      closeMenu();
       document.querySelectorAll('.modal-overlay.active').forEach(m => {
         m.classList.remove('active');
         document.body.style.overflow = '';
