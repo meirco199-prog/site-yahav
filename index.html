@@ -840,31 +840,33 @@
   .yh-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 7s ease}
   .yh-slide.on img{transform:scale(1)}
   .yh-ov{position:absolute;inset:0;z-index:1;background:
-     radial-gradient(ellipse 85% 75% at 50% 48%,rgba(8,20,42,.35),transparent 72%),
-     linear-gradient(to top,rgba(8,20,42,.90),rgba(8,20,42,.25) 50%,rgba(8,20,42,.60))}
-  .yh-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
-     align-items:center;justify-content:center;text-align:center;gap:10px;padding:0 6vw}
-  .yh-emblem{width:clamp(60px,8vw,100px);height:clamp(60px,8vw,100px);
+     linear-gradient(to left,rgba(8,20,42,.86) 0%,rgba(8,20,42,.55) 42%,rgba(8,20,42,.18) 100%),
+     linear-gradient(to top,rgba(8,20,42,.80),transparent 55%)}
+  .yh-brand{position:absolute;top:clamp(16px,3vw,30px);left:clamp(16px,4vw,46px);z-index:3;
+     width:clamp(46px,6vw,76px);height:clamp(46px,6vw,76px);
      background:url('images/emblem.png') center/contain no-repeat;
-     filter:drop-shadow(0 8px 22px rgba(0,0,0,.5)) brightness(1.12);animation:yhUp 1s .1s ease both}
-  .yh-name{font-size:clamp(19px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.1;
-     text-shadow:0 4px 24px rgba(0,0,0,.5);animation:yhUp 1s .3s ease both}
-  .yh-slogan{font-size:clamp(15px,2.3vw,23px);font-weight:700;
+     filter:drop-shadow(0 8px 20px rgba(0,0,0,.55)) brightness(1.12);animation:yhUp 1s .1s ease both}
+  .yh-content{position:absolute;top:50%;right:clamp(22px,7vw,92px);transform:translateY(-50%);
+     z-index:2;max-width:min(660px,82vw);text-align:right;color:#fff}
+  .yh-name{font-size:clamp(18px,2.6vw,30px);font-weight:800;letter-spacing:-.5px;line-height:1.1;
+     text-shadow:0 4px 22px rgba(0,0,0,.5);animation:yhUp 1s .3s ease both}
+  .yh-slogan{font-size:clamp(15px,2.1vw,22px);font-weight:700;margin-top:4px;
      background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
-     animation:yhUp 1s .45s ease both}
-  .yh-divider{width:56px;height:3px;border-radius:3px;background:rgba(255,255,255,.45);margin:12px 0 6px;animation:yhUp 1s .55s ease both}
-  .yh-rot-type{font-size:clamp(32px,5.6vw,62px);font-weight:900;color:#fff;line-height:1.05;
+     width:max-content;animation:yhUp 1s .42s ease both}
+  .yh-divider{width:58px;height:3px;border-radius:3px;background:rgba(255,255,255,.5);
+     margin:16px 0 12px;animation:yhUp 1s .52s ease both}
+  .yh-rot-type{font-size:clamp(34px,5.6vw,64px);font-weight:900;line-height:1.04;
      text-shadow:0 6px 30px rgba(0,0,0,.6)}
-  .yh-rot-sub{font-size:clamp(15px,2.2vw,23px);color:rgba(255,255,255,.92);font-weight:500;max-width:640px;
-     text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  .yh-rot-sub{font-size:clamp(15px,2.1vw,23px);color:rgba(255,255,255,.92);font-weight:500;margin-top:12px;
+     max-width:540px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
   .yh-rot-type,.yh-rot-sub{transition:opacity .45s ease,transform .45s ease}
   .yh-rot-type.swap,.yh-rot-sub.swap{opacity:0;transform:translateY(14px)}
-  .yh-dots{position:absolute;bottom:28px;left:0;right:0;z-index:3;display:flex;gap:9px;justify-content:center}
+  .yh-dots{position:absolute;bottom:28px;right:clamp(22px,7vw,92px);z-index:3;display:flex;gap:9px}
   .yh-dots i{width:30px;height:5px;border-radius:3px;background:rgba(255,255,255,.45);cursor:pointer;transition:.3s}
   .yh-dots i.on{background:#fff;width:46px}
   @media(max-width:600px){
-    .yh-content{gap:8px}.yh-divider{margin:8px 0 4px}
-    .yh-dots i{width:16px}.yh-dots i.on{width:26px}.yh-dots{bottom:18px}
+    .yh-content{right:18px;left:18px;max-width:none}
+    .yh-dots{right:18px;bottom:20px}.yh-dots i{width:18px}.yh-dots i.on{width:28px}
   }
 </style>
 <section id="hero" class="yh">
@@ -878,8 +880,8 @@
     <div class="yh-slide"><img src="images/hero/retire.jpg" alt="תכנון פרישה" loading="lazy"></div>
   </div>
   <div class="yh-ov"></div>
+  <div class="yh-brand"></div>
   <div class="yh-content">
-    <div class="yh-emblem"></div>
     <div class="yh-name">יהב סוכנות לביטוח</div>
     <div class="yh-slogan">ללכת על בטוח</div>
     <div class="yh-divider"></div>
