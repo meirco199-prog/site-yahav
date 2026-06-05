@@ -842,19 +842,15 @@
   .yh-slide.on img{transform:scale(1)}
   .yh-ov{position:absolute;inset:0;z-index:1;background:
      linear-gradient(to left,rgba(8,20,42,.86) 0%,rgba(8,20,42,.5) 45%,rgba(8,20,42,.15) 100%),
-     linear-gradient(to bottom,rgba(8,20,42,.55),transparent 28%)}
-  /* מותג בפינה שמאל-עליון */
-  .yh-brand{position:absolute;top:clamp(16px,3vw,30px);left:clamp(16px,4vw,46px);z-index:3;width:max-content;
-     animation:yhUp 1s .1s ease both}
-  .yh-brand .nm{font-size:clamp(17px,2.1vw,26px);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.5px;
-     text-shadow:0 3px 18px rgba(0,0,0,.55)}
-  .yh-brand .sl{font-size:clamp(13px,1.6vw,18px);font-weight:700;margin-top:2px;
-     background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
-  /* כיתוב מתחלף בצד ימין (דסקטופ) */
+     linear-gradient(to bottom,rgba(8,20,42,.45),transparent 26%)}
   .yh-content{position:absolute;top:50%;right:clamp(22px,7vw,92px);transform:translateY(-50%);
      z-index:2;max-width:min(660px,82vw);text-align:right;color:#fff}
+  .yh-name{font-size:clamp(19px,2.7vw,32px);font-weight:800;letter-spacing:-.5px;line-height:1.1;
+     text-shadow:0 4px 22px rgba(0,0,0,.5);animation:yhUp 1s .3s ease both}
+  .yh-slogan{font-size:clamp(16px,2.3vw,24px);font-weight:700;color:#fff;margin-top:3px;
+     text-shadow:0 3px 18px rgba(0,0,0,.5);animation:yhUp 1s .42s ease both}
   .yh-divider{width:58px;height:3px;border-radius:3px;background:rgba(255,255,255,.5);
-     margin:0 0 14px;animation:yhUp 1s .4s ease both}
+     margin:16px 0 12px;animation:yhUp 1s .52s ease both}
   .yh-rot-type{font-size:clamp(34px,5.6vw,64px);font-weight:900;line-height:1.04;text-shadow:0 6px 30px rgba(0,0,0,.6)}
   .yh-rot-sub{font-size:clamp(15px,2.1vw,23px);color:rgba(255,255,255,.92);font-weight:500;margin-top:12px;
      max-width:540px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
@@ -863,18 +859,19 @@
   .yh-dots{position:absolute;bottom:28px;right:clamp(22px,7vw,92px);z-index:3;display:flex;gap:9px}
   .yh-dots i{width:30px;height:5px;border-radius:3px;background:rgba(255,255,255,.45);cursor:pointer;transition:.3s}
   .yh-dots i.on{background:#fff;width:46px}
-  /* ===== מובייל: תמונה מלאה על המסך + כיתוב על התמונה למטה ===== */
+  /* ===== מובייל: תמונה מלאה + כל הכיתוב על התמונה למטה ===== */
   @media(max-width:768px){
     .yh-ov{background:
-       linear-gradient(to top,rgba(8,20,42,.92) 0%,rgba(8,20,42,.40) 40%,transparent 66%),
-       linear-gradient(to bottom,rgba(8,20,42,.55),transparent 26%)}
-    .yh-content{top:auto;bottom:74px;transform:none;left:0;right:0;max-width:none;padding:0 22px;text-align:center}
-    .yh-divider{margin:0 auto 12px}
+       linear-gradient(to top,rgba(8,20,42,.93) 0%,rgba(8,20,42,.42) 42%,transparent 68%),
+       linear-gradient(to bottom,rgba(8,20,42,.45),transparent 24%)}
+    .yh-content{top:auto;bottom:66px;transform:none;left:0;right:0;max-width:none;padding:0 22px;text-align:center}
+    .yh-name{font-size:20px}
+    .yh-slogan{font-size:16px}
+    .yh-divider{margin:12px auto}
     .yh-rot-type{font-size:36px}
     .yh-rot-sub{margin:12px auto 0;max-width:none;font-size:16px}
     .yh-dots{left:0;right:0;justify-content:center;bottom:26px}
     .yh-dots i{width:18px}.yh-dots i.on{width:28px}
-    .yh-brand .nm{font-size:18px}.yh-brand .sl{font-size:14px}
   }
 </style>
 <section id="hero" class="yh">
@@ -888,11 +885,9 @@
     <div class="yh-slide"><img src="images/hero/retire.jpg" alt="תכנון פרישה" loading="lazy"></div>
   </div>
   <div class="yh-ov"></div>
-  <div class="yh-brand">
-    <div class="nm">יהב סוכנות לביטוח</div>
-    <div class="sl">ללכת על בטוח</div>
-  </div>
   <div class="yh-content">
+    <div class="yh-name">יהב סוכנות לביטוח</div>
+    <div class="yh-slogan">ללכת על בטוח</div>
     <div class="yh-divider"></div>
     <div class="yh-rot-type" id="yhType">ביטוח בריאות</div>
     <div class="yh-rot-sub" id="yhSub">כיסוי רפואי פרטי, ניתוחים ותרופות — בלי להמתין בתורים</div>
