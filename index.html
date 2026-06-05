@@ -840,25 +840,31 @@
   .yh-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 7s ease}
   .yh-slide.on img{transform:scale(1)}
   .yh-ov{position:absolute;inset:0;z-index:1;background:
-     radial-gradient(ellipse 85% 70% at 50% 45%,rgba(8,20,42,.30),transparent 72%),
-     linear-gradient(to top,rgba(8,20,42,.88),rgba(8,20,42,.20) 50%,rgba(8,20,42,.55))}
+     radial-gradient(ellipse 85% 75% at 50% 48%,rgba(8,20,42,.35),transparent 72%),
+     linear-gradient(to top,rgba(8,20,42,.90),rgba(8,20,42,.25) 50%,rgba(8,20,42,.60))}
   .yh-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
-     align-items:center;justify-content:center;text-align:center;gap:16px;padding:0 6vw}
-  .yh-emblem{width:clamp(120px,15vw,190px);height:clamp(120px,15vw,190px);
+     align-items:center;justify-content:center;text-align:center;gap:10px;padding:0 6vw}
+  .yh-emblem{width:clamp(60px,8vw,100px);height:clamp(60px,8vw,100px);
      background:url('images/emblem.png') center/contain no-repeat;
-     filter:drop-shadow(0 12px 34px rgba(0,0,0,.55)) brightness(1.12);
-     animation:yhUp 1s .1s ease both}
-  .yh-name{font-size:clamp(34px,6vw,70px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.05;
-     text-shadow:0 6px 34px rgba(0,0,0,.55);animation:yhUp 1s .35s ease both}
-  .yh-slogan{font-size:clamp(24px,4.6vw,48px);font-weight:800;
+     filter:drop-shadow(0 8px 22px rgba(0,0,0,.5)) brightness(1.12);animation:yhUp 1s .1s ease both}
+  .yh-name{font-size:clamp(19px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.1;
+     text-shadow:0 4px 24px rgba(0,0,0,.5);animation:yhUp 1s .3s ease both}
+  .yh-slogan{font-size:clamp(15px,2.3vw,23px);font-weight:700;
      background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
-     animation:yhUp 1s .6s ease both}
-  @keyframes yhUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+     animation:yhUp 1s .45s ease both}
+  .yh-divider{width:56px;height:3px;border-radius:3px;background:rgba(255,255,255,.45);margin:12px 0 6px;animation:yhUp 1s .55s ease both}
+  .yh-rot-type{font-size:clamp(32px,5.6vw,62px);font-weight:900;color:#fff;line-height:1.05;
+     text-shadow:0 6px 30px rgba(0,0,0,.6)}
+  .yh-rot-sub{font-size:clamp(15px,2.2vw,23px);color:rgba(255,255,255,.92);font-weight:500;max-width:640px;
+     text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  .yh-rot-type,.yh-rot-sub{transition:opacity .45s ease,transform .45s ease}
+  .yh-rot-type.swap,.yh-rot-sub.swap{opacity:0;transform:translateY(14px)}
   .yh-dots{position:absolute;bottom:28px;left:0;right:0;z-index:3;display:flex;gap:9px;justify-content:center}
   .yh-dots i{width:30px;height:5px;border-radius:3px;background:rgba(255,255,255,.45);cursor:pointer;transition:.3s}
   .yh-dots i.on{background:#fff;width:46px}
   @media(max-width:600px){
-    .yh-content{gap:11px}.yh-dots i{width:18px}.yh-dots i.on{width:28px}.yh-dots{bottom:20px}
+    .yh-content{gap:8px}.yh-divider{margin:8px 0 4px}
+    .yh-dots i{width:16px}.yh-dots i.on{width:26px}.yh-dots{bottom:18px}
   }
 </style>
 <section id="hero" class="yh">
@@ -876,18 +882,42 @@
     <div class="yh-emblem"></div>
     <div class="yh-name">יהב סוכנות לביטוח</div>
     <div class="yh-slogan">ללכת על בטוח</div>
+    <div class="yh-divider"></div>
+    <div class="yh-rot-type" id="yhType">ביטוח בריאות</div>
+    <div class="yh-rot-sub" id="yhSub">כיסוי רפואי פרטי, ניתוחים ותרופות — בלי להמתין בתורים</div>
   </div>
   <div class="yh-dots" id="yhDots"></div>
 </section>
 <script>
 (function(){
+  var data=[
+    {t:"ביטוח בריאות", s:"כיסוי רפואי פרטי, ניתוחים ותרופות — בלי להמתין בתורים"},
+    {t:"ביטוח חיים",   s:"ביטחון כלכלי ושקט נפשי למשפחה שלך, בכל מצב"},
+    {t:"פנסיה וחיסכון", s:"בונים לך עתיד כלכלי בטוח ליום הפרישה"},
+    {t:"ביטוח רכב",    s:"מקיף, צד ג׳ וחובה — הצעה משתלמת ובלי כאב ראש"},
+    {t:"ביטוח דירה",   s:"מבנה ותכולה — הבית שלך מוגן מכל נזק"},
+    {t:"ביטוח נסיעות לחו״ל", s:"כיסוי רפואי, ביטול טיסה ומטען — שקט נפשי בכל יעד"},
+    {t:"תכנון פרישה",  s:"בונים אִתך תוכנית פרישה חכמה ומותאמת אישית"}
+  ];
   var slides=[].slice.call(document.querySelectorAll('#yhSlides .yh-slide'));
   if(!slides.length)return;
   var dotsWrap=document.getElementById('yhDots');
+  var rType=document.getElementById('yhType'), rSub=document.getElementById('yhSub');
   slides.forEach(function(_,i){var d=document.createElement('i');if(!i)d.className='on';d.onclick=function(){go(i);};dotsWrap.appendChild(d);});
   var dots=[].slice.call(dotsWrap.children);
   var cur=0,timer;
-  function go(n){if(n===cur)return;slides[cur].classList.remove('on');dots[cur].classList.remove('on');cur=n;slides[cur].classList.add('on');dots[cur].classList.add('on');restart();}
+  function go(n){
+    if(n===cur)return;
+    slides[cur].classList.remove('on');dots[cur].classList.remove('on');
+    cur=n;
+    slides[cur].classList.add('on');dots[cur].classList.add('on');
+    rType.classList.add('swap');rSub.classList.add('swap');
+    setTimeout(function(){
+      rType.textContent=data[cur].t;rSub.textContent=data[cur].s;
+      rType.classList.remove('swap');rSub.classList.remove('swap');
+    },330);
+    restart();
+  }
   function next(){go((cur+1)%slides.length);}
   function restart(){clearInterval(timer);timer=setInterval(next,4500);}
   restart();
