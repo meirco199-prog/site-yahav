@@ -842,10 +842,6 @@
   .yh-ov{position:absolute;inset:0;z-index:1;background:
      linear-gradient(to left,rgba(8,20,42,.86) 0%,rgba(8,20,42,.55) 42%,rgba(8,20,42,.18) 100%),
      linear-gradient(to top,rgba(8,20,42,.80),transparent 55%)}
-  .yh-brand{position:absolute;top:clamp(16px,3vw,30px);left:clamp(16px,4vw,46px);z-index:3;
-     width:clamp(46px,6vw,76px);height:clamp(46px,6vw,76px);
-     background:url('images/emblem.png') center/contain no-repeat;
-     filter:drop-shadow(0 8px 20px rgba(0,0,0,.55)) brightness(1.12);animation:yhUp 1s .1s ease both}
   .yh-content{position:absolute;top:50%;right:clamp(22px,7vw,92px);transform:translateY(-50%);
      z-index:2;max-width:min(660px,82vw);text-align:right;color:#fff}
   .yh-name{font-size:clamp(18px,2.6vw,30px);font-weight:800;letter-spacing:-.5px;line-height:1.1;
@@ -864,9 +860,19 @@
   .yh-dots{position:absolute;bottom:28px;right:clamp(22px,7vw,92px);z-index:3;display:flex;gap:9px}
   .yh-dots i{width:30px;height:5px;border-radius:3px;background:rgba(255,255,255,.45);cursor:pointer;transition:.3s}
   .yh-dots i.on{background:#fff;width:46px}
-  @media(max-width:600px){
-    .yh-content{right:18px;left:18px;max-width:none}
-    .yh-dots{right:18px;bottom:20px}.yh-dots i{width:18px}.yh-dots i.on{width:28px}
+  /* ===== מובייל: התמונה במלואה + כיתוב למטה ===== */
+  @media(max-width:768px){
+    .yh-slide img{object-fit:contain;object-position:center 30%;transform:none}
+    .yh-slide.on img{transform:none}
+    .yh-ov{background:linear-gradient(to top,rgba(8,20,42,.97) 0%,rgba(8,20,42,.75) 30%,rgba(8,20,42,.10) 62%,transparent 100%)}
+    .yh-content{top:auto;bottom:64px;transform:none;left:0;right:0;max-width:none;padding:0 22px;text-align:center}
+    .yh-name{font-size:20px}
+    .yh-slogan{margin-left:auto;margin-right:auto;font-size:16px}
+    .yh-divider{margin-left:auto;margin-right:auto;margin-top:12px}
+    .yh-rot-type{font-size:34px}
+    .yh-rot-sub{margin-left:auto;margin-right:auto;max-width:none;font-size:16px}
+    .yh-dots{left:0;right:0;justify-content:center;bottom:24px}
+    .yh-dots i{width:18px}.yh-dots i.on{width:28px}
   }
 </style>
 <section id="hero" class="yh">
@@ -880,7 +886,6 @@
     <div class="yh-slide"><img src="images/hero/retire.jpg" alt="תכנון פרישה" loading="lazy"></div>
   </div>
   <div class="yh-ov"></div>
-  <div class="yh-brand"></div>
   <div class="yh-content">
     <div class="yh-name">יהב סוכנות לביטוח</div>
     <div class="yh-slogan">ללכת על בטוח</div>
