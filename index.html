@@ -832,39 +832,67 @@
 </div>
 
 <!-- ══ HERO ══ -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-aside">
-    <div class="ha-emblem"></div>
-    <div class="ha-name">יהב סוכנות לביטוח</div>
-    <div class="ha-slogan">ללכת על בטוח</div>
+<style>
+  #hero.yh{min-height:100vh;height:100svh;padding:0;display:block;overflow:hidden;position:relative;background:#0a2647}
+  .yh-slides{position:absolute;inset:0;z-index:0}
+  .yh-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.3s ease}
+  .yh-slide.on{opacity:1}
+  .yh-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 7s ease}
+  .yh-slide.on img{transform:scale(1)}
+  .yh-ov{position:absolute;inset:0;z-index:1;background:
+     radial-gradient(ellipse 85% 70% at 50% 45%,rgba(8,20,42,.30),transparent 72%),
+     linear-gradient(to top,rgba(8,20,42,.88),rgba(8,20,42,.20) 50%,rgba(8,20,42,.55))}
+  .yh-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
+     align-items:center;justify-content:center;text-align:center;gap:16px;padding:0 6vw}
+  .yh-emblem{width:clamp(120px,15vw,190px);height:clamp(120px,15vw,190px);
+     background:url('images/emblem.png') center/contain no-repeat;
+     filter:drop-shadow(0 12px 34px rgba(0,0,0,.55)) brightness(1.12);
+     animation:yhUp 1s .1s ease both}
+  .yh-name{font-size:clamp(34px,6vw,70px);font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.05;
+     text-shadow:0 6px 34px rgba(0,0,0,.55);animation:yhUp 1s .35s ease both}
+  .yh-slogan{font-size:clamp(24px,4.6vw,48px);font-weight:800;
+     background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;
+     animation:yhUp 1s .6s ease both}
+  @keyframes yhUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  .yh-dots{position:absolute;bottom:28px;left:0;right:0;z-index:3;display:flex;gap:9px;justify-content:center}
+  .yh-dots i{width:30px;height:5px;border-radius:3px;background:rgba(255,255,255,.45);cursor:pointer;transition:.3s}
+  .yh-dots i.on{background:#fff;width:46px}
+  @media(max-width:600px){
+    .yh-content{gap:11px}.yh-dots i{width:18px}.yh-dots i.on{width:28px}.yh-dots{bottom:20px}
+  }
+</style>
+<section id="hero" class="yh">
+  <div class="yh-slides" id="yhSlides">
+    <div class="yh-slide on"><img src="images/hero/health.jpg" alt="ביטוח בריאות" fetchpriority="high"></div>
+    <div class="yh-slide"><img src="images/hero/life.jpg" alt="ביטוח חיים" loading="lazy"></div>
+    <div class="yh-slide"><img src="images/hero/pension.jpg" alt="פנסיה וחיסכון" loading="lazy"></div>
+    <div class="yh-slide"><img src="images/hero/car.jpg" alt="ביטוח רכב" loading="lazy"></div>
+    <div class="yh-slide"><img src="images/hero/home.jpg" alt="ביטוח דירה" loading="lazy"></div>
+    <div class="yh-slide"><img src="images/hero/travel.jpg" alt="ביטוח נסיעות לחו״ל" loading="lazy"></div>
+    <div class="yh-slide"><img src="images/hero/retire.jpg" alt="תכנון פרישה" loading="lazy"></div>
   </div>
-  <div class="hero-inner">
-  <div class="hero-badge"><span class="dot"></span> סוכנות ביטוח מורשית · נתיבות והדרום</div>
-  <div class="hero-logo">
-    <svg viewBox="0 0 120 120" fill="none" aria-label="יהב סוכנות לביטוח" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="yhvHero" x1="20" y1="8" x2="100" y2="112" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b8e2fb"/><stop offset=".5" stop-color="#56a8ec"/><stop offset="1" stop-color="#2e74c4"/></linearGradient></defs><g stroke="url(#yhvHero)" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M60 10 L102 34 L102 86 L60 110 L18 86 L18 34 Z"/><path d="M60 30 L70 36 L70 48 L60 54 L50 48 L50 36 Z"/><path d="M60 54 L60 94"/><path d="M60 64 L42 52 M42 52 L42 40"/><path d="M60 64 L78 52 M78 52 L78 40"/><path d="M60 78 L33 60 M33 60 L33 48"/><path d="M60 78 L87 60 M87 60 L87 48"/></g></svg>
+  <div class="yh-ov"></div>
+  <div class="yh-content">
+    <div class="yh-emblem"></div>
+    <div class="yh-name">יהב סוכנות לביטוח</div>
+    <div class="yh-slogan">ללכת על בטוח</div>
   </div>
-  <h1 class="hero-name">תחיה את החיים,<br><span>אנחנו דואגים לשאר</span></h1>
-  <p class="hero-sub">יהב סוכנות לביטוח · פנסיוני · פיננסי · כללי</p>
-  <p class="hero-tagline">
-    <strong>ליווי אישי, מקצועי ושקוף — לכל החיים.</strong><br/>
-    משווים עבורך מול כל חברות הביטוח המובילות ובונים הרכב מותאם אישית לאנשים, משפחות ועסקים.
-  </p>
-  <div class="hero-trust">
-    <span>✓ <b>15+</b> שנות ניסיון</span>
-    <span>✓ <b>1,500+</b> לקוחות מרוצים</span>
-    <span>✓ ייעוץ ללא עלות והתחייבות</span>
-  </div>
-  <div class="hero-btns">
-    <a href="#contact" class="btn btn-orange btn-blink">הצטרפו אלינו עכשיו</a>
-    <a href="#services" class="btn btn-outline">← לשירותים</a>
-  </div>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-dot"></div>
-    גלול
-  </div>
+  <div class="yh-dots" id="yhDots"></div>
 </section>
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('#yhSlides .yh-slide'));
+  if(!slides.length)return;
+  var dotsWrap=document.getElementById('yhDots');
+  slides.forEach(function(_,i){var d=document.createElement('i');if(!i)d.className='on';d.onclick=function(){go(i);};dotsWrap.appendChild(d);});
+  var dots=[].slice.call(dotsWrap.children);
+  var cur=0,timer;
+  function go(n){if(n===cur)return;slides[cur].classList.remove('on');dots[cur].classList.remove('on');cur=n;slides[cur].classList.add('on');dots[cur].classList.add('on');restart();}
+  function next(){go((cur+1)%slides.length);}
+  function restart(){clearInterval(timer);timer=setInterval(next,4500);}
+  restart();
+})();
+</script>
 
 <!-- ══ TRUST STRIP ══ -->
 <div class="trust-strip">
