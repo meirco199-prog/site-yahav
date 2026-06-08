@@ -24,6 +24,10 @@ self.addEventListener('activate', e => {
   );
 });
 
+self.addEventListener('message', e => {
+  if (e.data === 'skipWaiting') self.skipWaiting();
+});
+
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
@@ -37,7 +41,7 @@ self.addEventListener('fetch', e => {
     e.respondWith(
       fetch(req).then(resp => {
         const copy = resp.clone();
-        caches.open(CACHE).then(c => c.put(req, copy));
+        caches.open(CACHE).then(c => c.put('./index.html', copy));
         return resp;
       }).catch(() => caches.match(req).then(r => r || caches.match('./index.html')))
     );
@@ -54,7 +58,7 @@ self.addEventListener('fetch', e => {
           caches.open(CACHE).then(c => c.put(req, copy));
         }
         return resp;
-      }).catch(() => caches.match('./index.html'));
+      });
     })
   );
 });

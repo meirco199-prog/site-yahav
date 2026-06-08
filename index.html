@@ -746,16 +746,28 @@
     .cta-band .btn-wa{margin-inline:auto;}
 
     /* ══ FLOATING WA ══ */
+    .wa-fab{position:fixed;bottom:24px;left:24px;z-index:300;}
     .float-wa{
-      position:fixed;bottom:24px;left:24px;z-index:300;
+      position:relative;z-index:2;border:none;cursor:pointer;padding:0;
       width:60px;height:60px;border-radius:50%;
       background:linear-gradient(135deg,#25d366,#0e7a63);
       display:flex;align-items:center;justify-content:center;
-      font-size:27px;text-decoration:none;
       box-shadow:0 8px 28px -4px rgba(37,211,102,.6);
       animation:float-pulse 3s infinite;
       transition:transform .2s;
     }
+    .wa-menu{position:absolute;bottom:72px;left:0;width:236px;background:#fff;
+      border:1px solid var(--hairline);border-radius:16px;padding:8px;
+      box-shadow:0 22px 54px -18px rgba(16,42,84,.45);
+      opacity:0;visibility:hidden;transform:translateY(12px) scale(.95);transform-origin:bottom left;
+      transition:opacity .25s,transform .25s,visibility .25s;}
+    .wa-menu.open{opacity:1;visibility:visible;transform:none;}
+    .wa-menu-head{font-size:11.5px;font-weight:800;color:var(--muted2);letter-spacing:.5px;padding:8px 12px 8px;}
+    .wa-menu a{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--white);
+      font-weight:800;font-size:15px;padding:11px 12px;border-radius:11px;transition:background .2s;}
+    .wa-menu a span{font-size:11.5px;font-weight:600;color:var(--muted);margin-right:auto;}
+    .wa-menu a::before{content:'';width:9px;height:9px;border-radius:50%;background:#25d366;flex-shrink:0;}
+    .wa-menu a:hover{background:rgba(37,211,102,.1);}
     .float-wa:hover{transform:scale(1.1);}
     @keyframes float-pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5);}50%{box-shadow:0 6px 32px rgba(37,211,102,.75);}}
 
@@ -817,7 +829,7 @@
     <a href="#media">תקשורת</a>
     <a href="#contact">צור קשר</a>
   </div>
-  <a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לשיחת+ייעוץ" class="nav-cta">WhatsApp</a>
+  <a href="https://waze.com/ul?q=מתחם%20פריז%20נתיבות&navigate=yes" target="_blank" class="nav-cta" style="display:inline-flex;align-items:center;gap:7px;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12s-8-7-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>ניווט למשרד</a>
   <button class="nav-burger" id="navBurger" aria-label="תפריט" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 <div class="menu-backdrop" id="menuBackdrop" onclick="closeMenu()"></div>
@@ -1034,8 +1046,6 @@
         <span class="vf-corner vf-bl"></span><span class="vf-corner vf-br"></span>
         <video src="videos/office.mp4" autoplay muted loop playsinline preload="metadata" poster="images/office.jpg"></video>
         <div class="video-overlay"></div>
-        <div class="video-cap">יהב · נתיבות</div>
-        <button class="video-sound" type="button" aria-label="הפעלת קול">🔊 קול</button>
       </div>
     </div>
   </div>
@@ -1468,7 +1478,15 @@
 </footer>
 
 <!-- ══ FLOATING WA ══ -->
-<a href="https://api.whatsapp.com/send?phone=9720505554446&text=שלום+מאיר,+אשמח+לשיחת+ייעוץ" class="float-wa" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.1.1-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a2.7 2.7 0 0 0-.8 2c0 1.2.9 2.3 1 2.5.1.2 1.7 2.7 4.2 3.7 1.5.6 2.1.7 2.8.6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.4-.2Z"/></svg></a>
+<div class="wa-fab">
+  <div class="wa-menu" id="waMenu" role="menu" aria-label="בחירת נציג">
+    <div class="wa-menu-head">למי לפנות בוואטסאפ?</div>
+    <a href="https://wa.me/972505554446?text=שלום+מאיר,+אשמח+לשיחת+ייעוץ" target="_blank" role="menuitem">מאיר כהן<span>מנכ"ל</span></a>
+    <a href="https://wa.me/972534443490?text=שלום+רועי,+אשמח+לשיחת+ייעוץ" target="_blank" role="menuitem">רועי כהן<span>סוכן פנסיוני</span></a>
+    <a href="https://wa.me/972526503101?text=שלום+שקמה,+אשמח+לשיחת+ייעוץ" target="_blank" role="menuitem">שקמה טויטו<span>סוכנת פנסיונית</span></a>
+  </div>
+  <button class="float-wa" onclick="toggleWa(event)" aria-label="WhatsApp - בחירת נציג"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.1.1-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a2.7 2.7 0 0 0-.8 2c0 1.2.9 2.3 1 2.5.1.2 1.7 2.7 4.2 3.7 1.5.6 2.1.7 2.8.6.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.4-.2Z"/></svg></button>
+</div>
 
 <!-- ══════════════════════════════════
      MODALS — Service Details
@@ -1924,7 +1942,12 @@
 <!-- ══ JS ══ -->
 <script>
   // Modal open/close
-  function toggleMenu(){
+  function toggleWa(e){ if(e) e.stopPropagation(); document.getElementById('waMenu').classList.toggle('open'); }
+  document.addEventListener('click', function(e){
+    var m=document.getElementById('waMenu');
+    if(m && m.classList.contains('open') && !e.target.closest('.wa-fab')) m.classList.remove('open');
+  });
+    function toggleMenu(){
     var m=document.getElementById('mobileMenu'),b=document.getElementById('navBurger'),bd=document.getElementById('menuBackdrop');
     var open=m.classList.toggle('open'); b.classList.toggle('open',open); bd.classList.toggle('open',open);
     document.body.style.overflow=open?'hidden':'';
@@ -1949,6 +1972,7 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       closeMenu();
+      var _wm=document.getElementById('waMenu'); if(_wm) _wm.classList.remove('open');
       document.querySelectorAll('.modal-overlay.active').forEach(m => {
         m.classList.remove('active');
         document.body.style.overflow = '';
@@ -2009,8 +2033,19 @@
 
   // PWA: register service worker
   if ('serviceWorker' in navigator) {
+    var _refreshing=false;
+    navigator.serviceWorker.addEventListener('controllerchange', function(){
+      if(_refreshing) return; _refreshing=true; window.location.reload();
+    });
     window.addEventListener('load', function(){
-      navigator.serviceWorker.register('sw.js').catch(function(){});
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        reg.addEventListener('updatefound', function(){
+          var nw=reg.installing;
+          if(nw) nw.addEventListener('statechange', function(){
+            if(nw.state==='installed' && navigator.serviceWorker.controller) nw.postMessage('skipWaiting');
+          });
+        });
+      }).catch(function(){});
     });
   }
 
